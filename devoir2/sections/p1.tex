@@ -1,0 +1,76 @@
+{\footnotesize
+Soit une cavité électromagnétique avec un mode de fréquence $\omega_c$ contenant un atome. On place l'énergie de l'état fondemental $\ket{g}$ de l'atome à $0$ et on le traite comme un système à deux niveaux dont le niveau excité $\ket{e}$ a une énergie $\hbar \omega_0$. En parallèle, on décrit la cavité avec l'état de Fock $\ket{n}$ associé à un nombre d'occupation $n$ du mode bien défini. Un état comlet de la cavité et de l'atome est donné par les produits tensoriels $\ket{g} \otimes \ket{n}$ etLe hamiltonien de l'atome est donné par $H_a = \hbar \omega_0\sigma^\dagger \sigma$ où $\sigma$ est l'opérateur d'échelle  défini par $\sigma \ket{e} = \ket{g}$. En ce qui concerne le champ électromagnétique de la cavité, on a le hamiltonien $H_c = \hbar \omega_c a^\dagger a$ où $a$ est l'opérateur d'échelle des occupations de la cavité défini par 
+\begin{align}
+a = \sum_{k=0}^{\infty} \sqrt{k+1}|k\rangle\langle k+1|. \label{a}
+\end{align}
+
+Ensuite, dans le modèle de Jaynes-Cummings on décrit le couplage entre la cavité et l'atome avec un hamiltonien d'interaction $H_{ac} = \hbar g (\sigma^\dagger a + \sigma a^\dagger)$ avec $g$ une constante de couplage. Le hamiltonien total est donné par 
+\begin{align}
+    H = \hbar \omega_0\sigma^\dagger \sigma + \hbar \omega_c a^\dagger a + \hbar g (\sigma^\dagger a + \sigma a^\dagger). \label{Jaynes}
+\end{align}
+\begin{enumerate}
+    \item En appliquant \eqref{a} sur l'état de Fock $\ket{n}$ on trouve
+    \begin{align}
+      a \ket{n} = \sum_{k=0}^{\infty} \sqrt{k+1}|k\rangle\bra{k+1}\ket{n} = \sum_{k'=1}^{\infty} \sqrt{k'}|k'-1\rangle \delta_{k', n} = \begin{cases}
+         \sqrt{n}|n-1\rangle, \quad n\ge 1,\\ 
+         0, \quad n = 0
+      \end{cases} 
+      = \sqrt{n}|n-1\rangle \label{aa}
+    \end{align}
+    L'action de l'opérateur conjugé $a^\dagger$ sur $\ket{n}$ produit le résultat 
+    \begin{align}
+        a \ket{n} = \sum_{k=0}^{\infty} \sqrt{k+1}|k+1\rangle\bra{k}\ket{n} = \sum_{k=0}^{\infty} \sqrt{k}|k+1\rangle \delta_{k, n} =
+           \sqrt{n+1}|n+1\rangle \label{aad}
+    \end{align}
+    \item On considère maintenant l'état général
+    \begin{align}
+        |\Psi\rangle=\sum_{k\in \mathbb{N}} (c_{e, k}|e, k\rangle+c_{g, k}|g, k\rangle) \label{psi}
+    \end{align}
+    avec $c_{e, k}, \ c_{g, k} \in \mathbb{C}$. L'évolution temporelle de \eqref{psi} est donné par le Hamiltonien \eqref{Jaynes} combinée à l'équation de Schrodinger qui s'écrit 
+    \begin{align}
+       0 &=  i \hbar \partial_t |\Psi\rangle - H |\Psi\rangle \nonumber\\
+       &= \sum_{k\in \mathbb{N}} (i\hbar\partial_t{c}_{e, k}|e, k\rangle+i\hbar\partial_t{c}_{g, k}|g, k\rangle) - \sum_{k\in \mathbb{N}} \left(\hbar \omega_0\sigma^\dagger \sigma + \hbar \omega_c a^\dagger a + \hbar g  (\sigma^\dagger a + \sigma a^\dagger) \right)(c_{e, k}|e, k\rangle+c_{g, k}|g, k\rangle) \nonumber\\
+       &=  \sum_{k\in \mathbb{N}} \left(i\hbar\partial_t{c}_{e, k}|e, k\rangle+i\hbar\partial_t{c}_{g, k}|g, k\rangle - \hbar \omega_0 c_{e, k}|e, k\rangle - \hbar \omega_c k (c_{e, k}|e, k\rangle+c_{g, k}|g, k\rangle)  - \hbar g  (c_{g, k}\sqrt{k}|e, k-1\rangle +  c_{e, k}\sqrt{k+1}|g, k+1\rangle) \right).\label{psi2}
+    \end{align}
+    Pour simplifier \eqref{psi2}, on effectue les changement d'indices suivants: 
+    \begin{align}
+        &\sum_{k'=0}^\infty c_{g, k'}\sqrt{k'}|e, k'-1\rangle = \sum_{k = -1}^\infty c_{g, k+1}\sqrt{k+1}|e, k\rangle = \sum_{k\in \mathbb{N}} c_{g, k+1}\sqrt{k+1}|e, k\rangle, \quad k'-1 = k \nonumber\\ 
+        &\sum_{k'=0}^\infty  c_{e, k'}\sqrt{k'+1}|g, k'+1\rangle = \sum_{k=1}^\infty  c_{e, k-1}\sqrt{k}|g, k\rangle = \sum_{k\in \mathbb{M}}  c_{e, k-1}\sqrt{k}|g, k\rangle, \quad k'+1 = k \label{expr}
+    \end{align}
+    où on a autorisé un abus de notation laissant l'indice d'occupation du mode prendre des valeurs négatives pour simplifier la notation (le terme mal défini est multiplié par $0$). En injectant les expressions \eqref{expr} dans \eqref{psi2}, on trouve 
+    \begin{align}
+        0
+        &=  \sum_{k\in \mathbb{N}} \left(i\partial_t{c}_{e, k}|e, k\rangle+i\partial_t{c}_{g, k}|g, k\rangle - \omega_0 c_{e, k}|e, k\rangle - \omega_c k (c_{e, k}|e, k\rangle+c_{g, k}|g, k\rangle)  - g  (c_{g, k+1}\sqrt{k+1}|e, k\rangle +  c_{e, k-1}\sqrt{k}|g, k\rangle) \right)\nonumber \\
+        &= \sum_{k\in \mathbb{N}} \left(i\partial_t{c}_{e, k}- \omega_0 c_{e, k} - \omega_c k c_{e, k} - g c_{g, k+1}\sqrt{k+1} \right)|e, k\rangle+\sum_{k\in \mathbb{N}} \left(i\partial_t{c}_{g, k} -  - \omega_c k c_{g, k}  - g c_{e, k-1}\sqrt{k} \right)|g, k\rangle
+        .\label{psi3}
+     \end{align} 
+    L'indépendance linéaire des états $\ket{e, k}$ et $\ket{g, k}$ impose que tous les coefficients du développement \eqref{psi3} soient nuls en tout temps. Cela se traduit par le système d'équations 
+    \begin{align}
+        \partial_t{c}_{e, k} &= - i (\omega_0 + k \omega_c) c_{e, k} - ig \sqrt{k+1}c_{g, k+1},\nonumber\\
+        \partial_t{c}_{g, k} &= - i\omega_c k c_{g, k} - ig \sqrt{k} c_{e, k-1} \iff \partial_t{c}_{g, k+1} = - i\omega_c (k+1) c_{g, k+1} - ig \sqrt{k+1} c_{e, k}
+        .\label{eqdiff}
+     \end{align} 
+    \item On peut utiliser le système \eqref{eqdiff} pour décrire l'évolution de l'état initial $\ket{\Psi(t=0)}=\ket{g, 0}$. En posant $k=0$, on a directement l'équation différentielle 
+    $\partial_t{c}_{g, 0} = 0$ qui stipule que l'état ne change jamais et reste donc $\ket{g, 0}$ en tout temps. Ce résultat correspond au fait que si ni l'atome, ni le mode de la cavité ne contiennent de quanta d'énergie, il est impossible pour le système d'en acquérir où d'en échanger entre le mode et l'atome. 
+    \item Afin de simplifier le système \eqref{eqdiff}, on procède au changement de variable $c_{e, k} =  e^{-i\omega_c (k+1) t} c'_{e, k}$, $c_{g, k} =  e^{-i\omega_c k t} c'_{g, k}$ pour écrire 
+    \begin{align}
+        &e^{-i\omega_c (k+1) t}\partial_t{c}'_{e, k} - i\omega_c e^{-i\omega_c (k+1) t} (k+1) {c}'_{e, k} = - i (\omega_0 + k \omega_c) e^{-i\omega_c (k+1) t} c'_{e, k} - ig \sqrt{k+1}e^{-i\omega_c (k+1) t} c'_{g, k+1},\nonumber\\
+        &\iff \partial_t{c}'_{e, k}  = i\Delta c'_{e, k} - ig \sqrt{k+1} c'_{g, k+1}, \nonumber \\
+        &e^{-i\omega_c (k+1) t} \partial_t{c}'_{g, k+1} - i\omega_c e^{-i\omega_c (k+1) t} (k+1)  c'_{g, k} = - i\omega_c (k+1) e^{-i\omega_c (k+1) t} c'_{g, k+1} - ig \sqrt{k+1} e^{-i\omega_c (k+1) t} c'_{e, k}, \nonumber\\
+        &\iff \partial_t{c}'_{g, k+1}  = - ig \sqrt{k+1}  c'_{e, k}
+        .\label{eqdiff2}
+     \end{align} 
+     où $\Delta = \omega_c - \omega_0$.
+    \item On considère maintenant l'état initial $\ket{g, n+1}$ pour une cavité en résonnance avec l'atome ($\Delta = 0$). Dans ce cas, \eqref{eqdiff2} se réduit au système 
+    \begin{align}
+         \partial_t{c}'_{e, k}  = - ig \sqrt{k+1} c'_{g, k+1}\quad \& \quad \partial_t{c}'_{g, k+1}  = - ig \sqrt{k+1}  c'_{e, k}
+        .\label{eqdiff3}
+     \end{align} 
+    On remarque que \eqref{eqdiff3} couplent seulement la composante en $\ket{g, n+1}$ à la composante en $\ket{e, n}$. Pour résoudre \eqref{eqdiff3}, 
+    \item 
+    \item 
+    \item
+    \item
+    \item
+\end{enumerate}
+}
