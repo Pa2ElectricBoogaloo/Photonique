@@ -1,0 +1,40 @@
+Un système quantique représenté par l'état $\ket{\psi}$ peut également être représenté par la matrice densité $\rho = \ket{\psi}\bra{\psi}$ en adaptant la procédure pour calculer des probabilités et l'équation de Schrodinger qui devient 
+\begin{align}
+    i\hbar \partial_t \rho =  [H, \rho] \label{schro}
+\end{align}
+où $H$ est le hamiltonien du système.
+Alors que l'addition de deux états $\ket{\psi_1}$ et $\ket{\psi_2}$ produit une superposition d'état $a\ket{\psi_1}+b\ket{\psi_2}$, l'addition de leur matrices densité $|a|^2\ket{\psi_1}\bra{\psi_1}+|b|^2\ket{\psi_2}\bra{\psi_2}$ ne correspond à aucun état quantique de l'espace d'état initial. Il est plutôt question d'un mélange statistique qui caractériserait les propriétés statistiques de l'état $a\ket{\psi_1}\ket{e}_1 + b\ket{\psi_2}\ket{e}_2$ intriqué avec un système complémentaire (d'états orthogonaux $\ket{e}_1$, $\ket{e}_2$), sans toutefois faire référence à l'environnement. De manière plus générale, l'espace des matrices densités est plus grand que l'espace des états correspondant et on peut décomposer toutes les matrices en question dans la base $\{\ket{i}| n\in \{1, \cdots, N\}\}$ comme suit :
+\begin{align}
+    \rho = \sum_{i, j}^{N} \rho_{i, j} \ket{i}\bra{j}. \label{gen_def}
+\end{align}  
+Si la matrice représente un mélange statistique des états $\{\ket{\psi_n}| n\in \{1, \cdots, N\}\}$ héritant une probabilité de réalisation $p_n$ de l'environnement,  on a
+\begin{align}
+    \rho = \sum_{n}^{N} p_{n} \ket{\psi_n}\bra{\psi_n}\quad \& \quad \rho_{i, j} = \sum_n^{N} p_n\bra{i}\ket{\psi_n}\bra{\psi_n}\ket{j}. \label{gen_def2}
+\end{align}  
+\begin{enumerate}
+    \item En utilisant \eqref{gen_def2}, on peut donner un sens précis aux éléments $\rho_{i, i}$ de la décomposition \eqref{gen_def}. En effet, pour $i=j$, on 
+    \begin{align}
+        \rho_{i, i} = \sum_n^{N} p_n\bra{i}\ket{\psi_n}\bra{\psi_n}\ket{i}=\sum_n^{N} p_n|\bra{i}\ket{\psi_n}|^2. \label{gen_def3}
+    \end{align}  
+    On peut lire \eqref{gen_def3} en invoquant d'abord la règle du \textit{et} en probabilité: on a plusieurs résultats indépendants $\ket{\psi_n}$ et chaque terme correspond à probabilité de trouver le mélange statistique dans l'état $\ket{\psi_n}$ \textit{et} de le projeter dans l'état $\ket{i}$ lors de la mesure. Comme la règle du \textit{et} correspond à un produit, cette probabilité est $p_n \times |\bra{i}\ket{\psi_n}|^2$ soit le produit d'une probabilité classique par une probabilité quantique. Ensuite, la règle du \textit{ou} mène à une addition des probabilités de trouver $\ket{i}$ associées aux observations des différents états $\ket{\psi_n}$ du mélange et on retrouve directement \eqref{gen_def3}.
+    \item Un matrice densité correspond à un état pure si elle prend la forme $\ket{\psi}\bra{\psi}$ avec $\ket{\psi}$ dans l'espace des états initial. Dans la base donnée plus haut, la trace de $\rho$ est donnée par 
+    \begin{align}
+        \text{Tr}(\rho) = \sum_{i}^N \bra{i}\rho \ket{i}.\label{trace}
+    \end{align}
+    Pour un état pure $\ket{\psi}\bra{\psi}$, \eqref{trace} permet de calculer la trace de $\rho^2$ comme suit:
+    \begin{align}
+        \text{Tr}(\ket{\psi}\bra{\psi}\ket{\psi}\bra{\psi}) = \sum_{i}^N \bra{i}\ket{\psi}\bra{\psi} \ket{i} = \bra{\psi}\left(\sum_{i}^N  \ket{i}\bra{i}\right)\ket{\psi} = \bra{\psi} \ket{\psi} = 1\label{trace2}
+    \end{align}
+    qui correspond directement à condition de normalisation de l'état quantique $\ket{\psi}$. Pour des matrices densités générales $\mathrm{Tr}\rho^2$ constitue une mesure de la pureté de l'état atteignant le maximum $1$ pour un état pure. 
+    \item Soit deux matrices $A$ et $B$, l'expression de la trace de leur produit est donnée par \eqref{trace} et on a 
+    \begin{align}
+        \text{Tr}(AB) = \sum_{i}^N \bra{i}AB\ket{i} = \sum_{i,j}^N \bra{i}A\ket{j}\bra{j}B\ket{i} = \sum_{i,j}^N \bra{j}B\ket{i}\bra{i}A\ket{j} = \sum_{j}^N \bra{j}BA\ket{j} = \text{Tr}(BA)\label{trace3}
+    \end{align}
+    qui montre que la trace est cyclique pour la multiplication des deux matrices. Il en découle que $\text{Tr}([A, B]) = \text{Tr}(AB) - \text{Tr}(BA) = 0$ par linéarité de la trace. Sachant cela, en utilisant \eqref{schro}, on trouve 
+    \begin{align}
+         \partial_t \text{Tr}(\rho^2) = \text{Tr}\left(\rho \partial_t\rho + (\partial_t \rho) \rho\right)= \dfrac{1}{i\hbar}\text{Tr}\left(\rho[H, \rho]  + [H, \rho] \rho\right) = \dfrac{1}{i\hbar}\text{Tr}\left([H, \rho^2]\right) = 0. \label{schro2}
+    \end{align}
+    où on a utilisée une propriété du commutateur à la dernière égalité.
+      
+    \item On s'intéresse maintenant à l'émission spontanée d'un atome (système à deux niveaux $\ket{e}$ et $\ket{g}$) couplé à un bain électromagnétique. Initialement l'état représentant l'atome est un état pure qui subit des oscillations de Rabi (une signature de l'aspect quantique de l'état). Avec le passage du temps, le couplage au bain électromagnétique induit des transitions des quantas d'énergie de l'atome vers le bain électromagnétique (émission spontanée). Cela introduit une intrication entre l'état de l'atome et celui de son environnement: on ne peut plus décrire l'atome en faisant seulement référence à son espace d'états internes. Plus, précisément, Pour décrire l'atome en fonction du temps en faisant abstraction du bain on doit utiliser une matrice densité. Initialement cette matrice $2\times2$ a une trace $1$, mais, au fur et à mesure que le temps passe, l'état s'approche du mélange statistique équiprobable $(1/2)\ket{e}\bra{e}+(1/2)\ket{g}\bra{g}$ entre l'état fondemental et l'état excité de l'atome. Pour cet état la pureté est $\text{Tr}(\rho^2)=1/4 + 1/4 = 1/2$. Par \eqref{schro2}, la pureté est conservée dans le temps pour un système décris par un Hamiltonien. Or, l'atome n'est pas un système fermé et il n'est pas décris par un Hamiltonien si on fait abstraction du bain. Cependant, le systeme total est décris par un Hamiltonien et est fermé.  Initialement l'état du système complet est donné par un état pur pour l'atome et un état pure pour la cavité ce qui se traduit par une pureté totale $1$. On peut utilisé cette remarque pour conclure un changement de la pureté finale de l'état du bain. La conservation de la pureté implique qu'au final, la pureté de l'état du bain doit avoir diminuée pour compenser la diminution de la pureté de l'état de l'atome (le bain est intriqué à l'atome et l'atome est intriqué au bain). EN général, les effets de déchoérences vont diminuer la pureté de l'état quantique d'un système ouvert. 
+\end{enumerate}

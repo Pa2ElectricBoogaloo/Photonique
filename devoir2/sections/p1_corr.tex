@@ -108,9 +108,16 @@ Ensuite, dans le modèle de Jaynes-Cummings on décrit le couplage entre la cavi
     L'expression \eqref{phase2} montre que le passage de l'atome dans la cavité introduit une phase relative entre les états $\ket{e}$ et $\ket{g}$ de la superposition initiale. La fréquence à laquelle ce déphasage évolue dans le temps est $\omega_c + g (\sqrt{n}+ \sqrt{n+1})$ et elle encode donc le nombre de photons dans la cavité. Si $g$ est suffisamment petit, le terme $\omega_c$ correspond à un changement de phase très rapide alors que le terme en $g$ est plus lent. Sur des temps caractéristiques de la période associée à $g$ le terme en $\omega_c$ est globalement moyenné.    
 
 
+
+
+
+
+
+
+
     \item Un état cohérent de la cavité est donné par la série 
     \begin{align} 
-        |\alpha\rangle=e^{-|\alpha|^2/2} \sum_{k \in \mathbb{N}} \frac{\alpha^k}{\sqrt{k !}}|k\rangle. \label{coherent}
+        |\alpha\rangle=e^{-|\alpha|^2 / 2} \sum_{k \in \mathbb{N}} \frac{\alpha^k}{\sqrt{k !}}|k\rangle. \label{coherent}
     \end{align}
     avec $\alpha \in \mathbb{C}$.
     Considérons la situation où la cavité et l'atome se trouvent respectivement initialement dans l'état \eqref{coherent} et dans l'état $\ket{e}$. Pour obtenir l'évolution temporelle de cet état initial en résonnance, il suffit d'obtenir celle de $\ket{e, n}$ en utilisant la solution générale \eqref{sol}. On a $c_{g, n+1}(0) = c'_{g, n+1}(0) = 0$ et $c_{e, n}(0) = c'_{e, n}(0) = 1$ qui correspondent aux dérivées initiales $\partial_t c'_{g, n+1}(0) = -i\Omega_n \equiv -ig\sqrt{n+1}$ et $\partial_t c'_{e, n}(0) = 0$. Ces conditions initiales restreignent \eqref{sol} à 

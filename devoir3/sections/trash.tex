@@ -1,0 +1,29 @@
+Pour comparer cette fréquence avec celle du modèle \eqref{Jaynes}, on utilise l'expression du champ électrique en seconde quantification pour un seul mode occupé. Il est donné par 
+    \begin{align}
+        \mathbf{E}(\mathbf{r})=i \sqrt{\frac{\hbar \omega_c}{2 \varepsilon_0 L^3}} \hat{\varepsilon}\left(a e^{i \mathbf{k} \cdot \mathbf{r}}-a^{\dagger} e^{-i \mathbf{k} \cdot \mathbf{r}}\right)\label{E}
+    \end{align}
+    où $L$ est la largeur d'un côté de la cavité et $\mathbf{r}$ est la position de l'atome dans la cavité. Pour simplifier \eqref{E}, on prend $\mathbf{r}= \mathbf{0}$ et on calcul l'équivalent de l'expression de la fréquence de Rabi semi-classique pour une cavité contenant $n$ quantas comme suit:
+    \begin{align}
+        \Omega_n = -2 i \sqrt{\frac{\omega_c}{2 \varepsilon_0 L^3 \hbar}} \bra{g, n + 1} \mathbf{E}(\mathbf{0}) \cdot \mathbf{d} \ket{e, n} = -2i \sqrt{\frac{\omega_c}{2 \varepsilon_0 L^3 \hbar}} \bra{g} \hat{\varepsilon} \cdot \mathbf{d} \ket{e} \bra{n+1} (a-a^{\dagger}) \ket{n} = 2i \sqrt{\frac{\omega_c}{2 \varepsilon_0 L^3\hbar }} \bra{g} \hat{\varepsilon} \cdot \mathbf{d} \ket{e} \sqrt{n+1} \label{E2}
+    \end{align}
+    Pour faire correspondre \eqref{E2} au cas semi-classique, on prend $\hat{\varepsilon} = (i\hat{\varepsilon}_z + \hat{\varepsilon}_x)$ et $\mathbf{d}$ othrogonale à $x$ de sorte que 
+    \begin{align}
+        \Omega_n = -2 \sqrt{\frac{\omega_c}{2 \varepsilon_0 L^3\hbar }} \bra{g} \hat{\varepsilon}_z \cdot \mathbf{d} \ket{e} \sqrt{n+1} \label{E3}.
+    \end{align}
+    Avec le résultat \eqref{E3}, on remarque que la fréquence de Rabi pour le modèle quantique obtenue en 5. est retrouvée si on fait l'identification $g =-2 \sqrt{\frac{\omega_c}{2 \varepsilon_0 L^3\hbar }} \bra{g} \hat{\varepsilon}_z \cdot \mathbf{d} \ket{e}$. On peut également faire l'identification $E_0 = \sqrt{\frac{\omega_c}{2 \varepsilon_0 L^3\hbar }} \sqrt{n+1}$ qui indique que la dépendance en $n$ de la fréquence de Rabi quantique est une conséquence de la quantification du champs électromagnétique. Plus $n$ est grand, plus l'intensité du champ électrique est grande et classiquement cela se traduit par un grand $E_0$ effectif dans le terme forcant. 
+
+
+    Les états propres de l'atome dans la cavité sont 
+    \begin{align}
+            &|+\rangle_n=\sin (\theta_n)|g, n+1\rangle+\cos(\theta_n)|e, n\rangle, \nonumber \\
+            &|-\rangle_n=\cos (\theta_n)|g, n+1\rangle-\sin(\theta_n)|e, n\rangle \label{eigen}
+    \end{align}
+    avec $\tan(2 \theta_n) = -2 g \sqrt{n+1}/\Delta$ avec des énergies propres respectives $E_n^{\pm}=(n+1) \hbar \omega_c \pm \hbar g \sqrt{n+1}$. On cherche à décomposer $\ket{\Psi}$ dans la base \eqref{eigen} et on remarque que 
+    \begin{align*}
+        &\cos(\theta_n)|+\rangle_n - \sin(\theta_n)|-\rangle_n \nonumber\\&= \sin(\theta_n)\cos(\theta_n)|g, n+1\rangle+\cos^2(\theta_n)|e, n\rangle - \sin(\theta_n)\cos(\theta_n)|g, n+1\rangle+\sin^2(\theta_n)|e, n\rangle = |e, n\rangle\nonumber\\
+        &\cos(\theta_{n-1})|+\rangle_{n-1} + \sin(\theta_{n-1})|-\rangle_{n-1}\nonumber\\ &= \cos^2(\theta_{n-1}) |g, n\rangle+\sin(\theta_{n-1})\cos(\theta_{n-1})|e, n-1\rangle + \sin^2(\theta_{n-1})|g, n\rangle-\sin(\theta_{n-1})\cos(\theta_{n-1})|e, n-1\rangle = |g, n\rangle
+    \end{align*}
+    qui entraine les évolutions temporelles
+    \begin{align}
+        \ket{e, n}(t) = e^{-i g \sqrt{n+1} t} \cos(\theta_n) |+\rangle_n - e^{+i g \sqrt{n+1} t}\sin(\theta_n)|-\rangle_n
+    \end{align}
